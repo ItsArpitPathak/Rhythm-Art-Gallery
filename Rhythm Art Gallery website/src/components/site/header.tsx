@@ -7,9 +7,8 @@ import { useState } from "react";
 import { Disclosure, DisclosureContent, DisclosureTrigger } from "@/components/motion-primitives/disclosure";
 import { ScrollProgress } from "@/components/motion-primitives/scroll-progress";
 import { cn } from "@/lib/utils";
+import { useCart } from "@/lib/use-cart";
 import { NAV_LINKS, SHOP } from "./nav-links";
-
-const CART_COUNT = 0; // stub until the cart exists (stage 8)
 
 function Icon({ d }: { d: string }) {
   return (
@@ -22,6 +21,7 @@ function Icon({ d }: { d: string }) {
 export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const { count: CART_COUNT } = useCart();
   const link = (href: string) =>
     cn(
       "rounded-full px-4 py-2 text-sm font-medium transition-colors hover:bg-blush/60 hover:text-rani",
@@ -59,9 +59,11 @@ export function Header() {
           <div className="flex items-center gap-1">
             <Link href="/cart" className="relative rounded-full p-2 hover:bg-blush/60 hover:text-rani" aria-label={`Cart, ${CART_COUNT} items`}>
               <Icon d="M6 7h13l-1.5 9h-10zM6 7 5 3H2M9 20.5h.01M16 20.5h.01" />
-              <span className="absolute -right-0.5 -top-0.5 grid size-4 place-items-center rounded-full bg-rani text-[10px] font-semibold text-paper">
-                {CART_COUNT}
-              </span>
+              {CART_COUNT > 0 && (
+                <span className="absolute -right-0.5 -top-0.5 grid size-4 place-items-center rounded-full bg-rani text-[10px] font-semibold text-paper">
+                  {CART_COUNT}
+                </span>
+              )}
             </Link>
             <Link href="/login" className="hidden rounded-full bg-rani px-4 py-2 text-sm font-medium text-paper transition-colors hover:bg-ink sm:block">
               Login
