@@ -1,4 +1,4 @@
-> **SUPERSEDED.** Stack changed to Next.js + Prisma + Postgres. See `/vision.md` and `/docs/decisions.md`. Kept for reference only.
+> **SUPERSEDED.** Stack changed to Next.js + Prisma + Postgres. See `vision.md` and `docs/decisions.md`. Kept for reference only.
 
 # Rhythm Art Gallery — Low-Level Design (LLD) Report
 
