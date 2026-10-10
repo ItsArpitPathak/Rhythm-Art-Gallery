@@ -12,3 +12,8 @@ Before PR #1 there was no PR workflow: docs went straight to `main`, and stage 1
 - Branch `stage-2-design-shell`. Status: merged.
 - **What:** palette and fonts, hand-drawn mountain background and embroidery divider SVGs, header (logo badge, nav, cart icon, login, animated mobile menu, scroll progress bar), footer with placeholder contact details, RAG logo.
 - **Changed in `main`:** docs moved into `docs/`, code into `src/`, logo into `public/brand/`; `globals.css` and `layout.tsx` rewritten with tokens/fonts/shell; added `src/components/site/*`, two copied Motion Primitives (Disclosure, ScrollProgress), `motion` dependency, ESLint ignore for the vendored folder; home page replaced by a placeholder.
+
+## PR #2 — Stage 3: interactive landing page
+- Branch `stage-3-landing`. Status: merged.
+- **What:** full landing page on static data: hero (animated headline, rotating category word, tilting arch photo, magnetic glowing CTA), category tiles, new-arrivals scroll strip, craft story with count-up stats, community teaser, visit banner. 32 placeholder Unsplash photos plus a README for swapping them.
+- **Changed in `main`:** home page rebuilt from the placeholder; added `src/components/home/*`, `shop/product-card`, `site/section-heading`, `src/data/{catalog,community}.ts` with a data/image-integrity test, `formatPrice`, eight more copied Motion Primitives, and `public/images/**`.
