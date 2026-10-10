@@ -25,7 +25,7 @@ A working, concept-stage e-commerce site for a local boutique (saris, suits, jew
 ## Stage 0 — Foundation docs ✅
 `vision.md`, `docs/decisions.md`, `CLAUDE.md`, `.env.example`, `.gitignore`, `handover.md`. Stack locked. Old Spring Boot docs removed.
 
-## Stage 1 — Scaffold & tooling
+## Stage 1 — Scaffold & tooling ✅ (awaiting review)
 **Goal:** empty app that builds, lints, type-checks and tests.
 - Needs approval: dependency list (next, react, typescript, tailwindcss, eslint, vitest; later stages add prisma, next-auth, zod, razorpay, motion, bcryptjs, playwright).
 - Next.js + TS + Tailwind; scripts `dev`, `test`, `lint`, `typecheck`; one trivial passing test.
