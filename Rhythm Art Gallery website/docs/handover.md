@@ -66,5 +66,12 @@ Header: logo badge, nav, live cart count, login, animated mobile menu, scroll pr
 - **Tests:** 6 files, 17 tests pass, including `prisma/seed.db.test.ts`, a read-only check of the seeded database (skipped when `DATABASE_URL` is unset).
 - `npm audit` also reports 4 high in the `prisma` dev CLI (deepmerge-ts, bundled mysql2; we use Postgres only, CLI not shipped). The only fix downgrades Prisma to 6, not applied.
 
+## UI polish pass (Emil Kowalski + taste skills)
+- Motion: removed hero GlowEffect and TextLoop line; 150ms `active:scale-[0.97]` press state on buttons; 300ms ease-out image hovers (no Tilt on category tiles); add-to-bag label cross-fade; cart badge spring bump; sliding active-nav pill; visit CTA slides up instead of scaling; `MotionConfig reducedMotion="user"` (`src/components/site/motion.tsx`) plus a reduced-motion CSS block.
+- Layout: category tiles are a bento (Saris large); `min-h-dvh`; mountains background is a fixed `body::before` layer, not `background-attachment: fixed`.
+- Kept: placeholder stats (10+/500+/12) by user decision. Lint, typecheck, 17 tests pass.
+- Mobile tap targets: all interactive controls ≥44px tall at 375px (header icons, footer links, CTAs, breadcrumbs, filter chips, selects, form fields, qty buttons, accordion headers, checkbox labels); inputs/selects 16px on mobile (no iOS zoom), 14px from `md`.
+- Skipped: `Tilt` still used on hero image and community page.
+
 ## Next action
 Objective stage 5: switch the pages from `src/data` to the database (server components reading through `src/lib/db.ts`, with tests). Meanwhile: send real photos, shop details and community content, and approve the stage 7–9 dependencies when ready.

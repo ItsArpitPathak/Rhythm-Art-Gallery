@@ -56,7 +56,7 @@ export default async function ProductPage({ params }: { params: Params }) {
               ["Shipping & returns", "Ships in 3 to 5 working days. Returns accepted within 7 days of delivery, unworn and with tags."],
             ].map(([title, body]) => (
               <details key={title} className="group p-4">
-                <summary className="flex cursor-pointer list-none items-center justify-between font-heading font-semibold">
+                <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between font-heading font-semibold">
                   {title}
                   <span className="text-rani transition-transform group-open:rotate-45" aria-hidden>+</span>
                 </summary>

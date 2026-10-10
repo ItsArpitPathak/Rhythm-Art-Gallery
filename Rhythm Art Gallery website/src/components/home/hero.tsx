@@ -1,12 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { GlowEffect } from "@/components/motion-primitives/glow-effect";
 import { Magnetic } from "@/components/motion-primitives/magnetic";
 import { TextEffect } from "@/components/motion-primitives/text-effect";
-import { TextLoop } from "@/components/motion-primitives/text-loop";
 import { Tilt } from "@/components/motion-primitives/tilt";
-
-const WORDS = ["Saris", "Suits", "Jewellery", "Handbags", "Purses"];
 
 export function Hero() {
   return (
@@ -18,30 +14,19 @@ export function Hero() {
             Wear the art of embroidery.
           </TextEffect>
         </h1>
-        <div className="flex items-baseline justify-center gap-2 text-xl text-peacock md:justify-start">
-          <span>Handpicked</span>
-          <TextLoop className="font-heading font-semibold text-rani" interval={2.2}>
-            {WORDS.map((w) => (
-              <span key={w}>{w}</span>
-            ))}
-          </TextLoop>
-        </div>
         <p className="mx-auto max-w-md text-ink/70 md:mx-0">
           Silks that remember the loom, jewellery that catches the lamp, bags that carry the day. Made for the way you celebrate.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-4 md:justify-start">
           <Magnetic intensity={0.3} range={80}>
-            <div className="relative">
-              <GlowEffect colors={["#c2185b", "#f5a524", "#0e7c86"]} mode="rotate" blur="medium" scale={1.05} />
-              <Link
-                href="/shop"
-                className="relative block rounded-full bg-rani px-8 py-3 text-sm font-semibold text-paper transition-colors hover:bg-ink"
-              >
-                Explore the collection
-              </Link>
-            </div>
+            <Link
+              href="/shop"
+              className="block rounded-full bg-rani px-8 py-3 text-sm font-semibold text-paper transition-[transform,background-color,color,border-color] duration-150 ease-out active:scale-[0.97] hover:bg-ink"
+            >
+              Explore the collection
+            </Link>
           </Magnetic>
-          <Link href="/new-arrivals" className="rounded-full border border-ink/20 px-6 py-3 text-sm font-semibold hover:border-rani hover:text-rani">
+          <Link href="/new-arrivals" className="rounded-full border border-ink/20 px-6 py-3 text-sm font-semibold transition-[transform,background-color,color,border-color] duration-150 ease-out active:scale-[0.97] hover:border-rani hover:text-rani">
             See new arrivals
           </Link>
         </div>

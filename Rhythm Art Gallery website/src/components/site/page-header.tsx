@@ -4,14 +4,14 @@ export type Crumb = { label: string; href?: string };
 
 export function PageHeader({ title, intro, crumbs }: { title: string; intro?: string; crumbs: Crumb[] }) {
   return (
-    <header className="mx-auto max-w-6xl px-4 pb-8 pt-10">
+    <header className="mx-auto max-w-6xl px-4 pb-8 pt-6">
       <nav aria-label="Breadcrumb" className="text-xs text-ink/60">
         <ol className="flex flex-wrap items-center gap-1.5">
-          <li><Link href="/" className="hover:text-rani">Home</Link></li>
+          <li><Link href="/" className="inline-flex min-h-11 items-center hover:text-rani">Home</Link></li>
           {crumbs.map((c) => (
             <li key={c.label} className="flex items-center gap-1.5">
               <span aria-hidden>/</span>
-              {c.href ? <Link href={c.href} className="hover:text-rani">{c.label}</Link> : <span aria-current="page" className="text-ink">{c.label}</span>}
+              {c.href ? <Link href={c.href} className="inline-flex min-h-11 items-center hover:text-rani">{c.label}</Link> : <span aria-current="page" className="text-ink">{c.label}</span>}
             </li>
           ))}
         </ol>
