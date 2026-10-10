@@ -42,3 +42,8 @@ Before PR #1 there was no PR workflow: docs went straight to `main`, and stage 1
 - Branch `checkout-ui`. Status: merged.
 - **What:** the checkout screen: address form with validation, payment-method choice, order summary from the cart. Place order shows a preview notice; no order or payment happens without the backend.
 - **Changed in `main`:** added `/checkout` route, `components/shop/checkout-view.tsx`, `src/lib/india.ts` (state list). "Proceed to checkout" and "Buy now" now land on a real page.
+
+## PR #8 — Mobile polish and handover docs
+- Branch `polish-and-docs`. Status: merged.
+- **What:** fixed small sideways overflow on the home and community pages on phones; rewrote the handover to say exactly what is built, what is stubbed, and where the front end stops.
+- **Changed in `main`:** layout content wrapper now clips horizontal overflow; `docs/handover.md` rewritten; `docs/objective.md` gained a status table; `docs/decisions.md` gained the front-end-first decisions.
