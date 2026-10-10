@@ -20,6 +20,7 @@ Next.js (App Router) + TypeScript + Tailwind · Prisma + PostgreSQL · Auth.js �
 - Ask before adding a new dependency.
 - Small reviewable changes. One feature per branch. Commit/push only when asked.
 - Record decisions and reasons in `docs/decisions.md`.
+- Keep `handover.md` current: update it at the end of every session, successful build, and successful commit (status, commits, checks, skipped items, open questions, next action).
 - Build UI one section at a time; stop after each. Only palette/fonts from the user. Copy Motion Primitives source, don't rewrite.
 
 ## Style
