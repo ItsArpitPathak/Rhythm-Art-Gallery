@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 420" preserveAspectRatio="xMidYMax slice">
+  <path fill="#ffcfdf" fill-opacity=".55" d="M0 420V230l90-60 80 40 120-110 110 90 90-50 130 120 100-80 120 110 100-90 130 130 120-100 150 110 60-50v260z"/>
+  <path fill="#fdeed1" fill-opacity=".8" d="M0 420V300l110-70 90 50 140-120 120 100 100-60 150 130 110-90 130 110 110-80 140 120 130-90 100 70v150z"/>
+  <path fill="#0e7c86" fill-opacity=".10" d="M0 420V350l120-60 100 50 130-90 110 80 120-70 140 100 120-60 120 90 130-80 150 90 100-50v170z"/>
+</svg>

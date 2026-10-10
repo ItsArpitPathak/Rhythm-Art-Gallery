@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Vendored third-party source (Motion Primitives), kept as published.
+    "src/components/motion-primitives/**",
   ]),
 ]);
 
