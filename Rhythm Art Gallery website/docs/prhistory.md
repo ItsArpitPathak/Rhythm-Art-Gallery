@@ -22,3 +22,8 @@ Before PR #1 there was no PR workflow: docs went straight to `main`, and stage 1
 - Branch `cart-ui`. Status: merged.
 - **What:** a working cart that lives in the browser: add/merge lines, change quantity (max 10), remove, totals with a placeholder shipping rule, empty state, and a live cart count in the header. Backend cart is deferred.
 - **Changed in `main`:** added `src/lib/{cart,use-cart}.ts` (+ tests), `components/shop/cart-view.tsx`, `/cart` route; header badge now reads the real count instead of a hard-coded 0; Vitest got an `@` alias.
+
+## PR #4 — Catalogue UI: shop, categories, product page, new arrivals
+- Branch `catalogue-ui`. Status: merged.
+- **What:** browse the shop with category tabs, price filter and sort; per-category pages; a new-arrivals page with category tabs; product detail with hover zoom, size and quantity pickers, working Add to bag / Buy now, accordions and related items; styled 404.
+- **Changed in `main`:** added routes `/shop`, `/shop/[category]`, `/new-arrivals`, `/product/[slug]`, `not-found`; components `product-browser`, `add-to-bag`, `zoom-image`, `page-header`; one more copied Motion Primitive (Animated Background). Home-page links to categories and products now resolve.
