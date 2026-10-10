@@ -2,7 +2,7 @@
 
 Living status doc. Read this first when picking up the project. Updated at the end of every session, successful build, and commit.
 
-**Last updated:** 2026-10-10 · front end complete on static data; stopped at the backend. PRs #1 to #8 merged to `main`.
+**Last updated:** 2026-10-10 · front end complete on static data (PRs #1 to #9 merged). Stage 4 (data layer) started on branch `stage-4-data-layer`, partly done, blocked on Neon + one dependency approval.
 
 ## Project
 Concept e-commerce site for a local boutique, Rhythm Art Gallery (RAG): saris, suits, jewellery, handbags, purses. Interactive floral-Indian-embroidery look, community page, cart, checkout, login, Razorpay payments (payments and login not live yet). See `vision.md`.
@@ -58,5 +58,11 @@ Header: logo badge, nav, live cart count, login, animated mobile menu, scroll pr
 4. Repo root is the parent folder `Rhythm Art Gallery/`, not the website folder. Flattening needs a history rewrite and force-push.
 5. Placeholder shipping rule and return policy (7 days) are mine, not the shop's.
 
-## Next action
-Approve the backend dependency list and say which Postgres to use (local Docker or Neon), then continue at objective stage 4 (Prisma schema, migration, seed), moving the static `src/data` catalogue into the database. Meanwhile, send real photos, shop details and community content.
+## Stage 4 status (branch `stage-4-data-layer`, draft PR, not merged)
+Done offline and tested: Prisma schema (`prisma/schema.prisma`), `prisma.config.ts`, first migration SQL (`prisma/migrations/20261010000000_init`), seed row mapping (`prisma/seed-data.ts`, 3 tests), npm scripts `migrate`, `db:generate`, `db:seed`, `postinstall`. Installed: prisma 7.10.0, @prisma/client 7.10.0, zod, tsx.
+`npm audit` now also reports 4 high in the `prisma` dev CLI (deepmerge-ts, bundled mysql2; we use Postgres only, CLI not shipped to production). The only fix downgrades Prisma to 6, not applied.
+
+## Next action (needs you)
+1. Create the Neon project and database yourself, then put the connection string in a local `.env` as `DATABASE_URL` (see `.env.example`). Do not paste it in chat.
+2. Approve the Prisma driver adapter: `@prisma/adapter-pg` + `pg` (+ `@types/pg`), which Prisma 7 requires to talk to Postgres. (Or `@prisma/adapter-neon`.)
+Then I apply the migration, write `src/lib/db.ts` and `prisma/seed.ts`, run the seed, move the pages from `src/data` to the database, and merge the PR.
