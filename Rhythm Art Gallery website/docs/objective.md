@@ -10,7 +10,7 @@ A working, concept-stage e-commerce site for a local boutique (saris, suits, jew
 |---|---|
 | 0 Foundation docs · 1 Scaffold · 2 Design shell | done |
 | 3 Landing page | done (static data) |
-| 4 Data layer | **in progress** (branch `stage-4-data-layer`): schema, migration SQL and seed mapping done offline and tested; **blocked on your Neon `.env` + approval for the Prisma driver adapter** |
+| 4 Data layer | done (PR #10): schema, migration applied to Neon `dev`, seed, db client |
 | 5 Catalogue pages | UI done on static data; DB wiring pending |
 | 6 Community page | UI done on static data; DB wiring pending |
 | 7 Authentication | UI only (`/login`, `/register`); real auth pending |

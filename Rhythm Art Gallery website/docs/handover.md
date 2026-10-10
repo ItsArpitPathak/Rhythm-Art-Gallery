@@ -2,7 +2,7 @@
 
 Living status doc. Read this first when picking up the project. Updated at the end of every session, successful build, and commit.
 
-**Last updated:** 2026-10-10 · front end complete on static data (PRs #1 to #9 merged). Stage 4 (data layer) started on branch `stage-4-data-layer`, partly done, blocked on Neon + one dependency approval.
+**Last updated:** 2026-10-10 · front end complete on static data (PRs #1 to #9). Stage 4 (data layer) done in PR #10: schema, migration applied to the Neon `dev` branch, seed run, `src/lib/db.ts`. Pages still read the static data.
 
 ## Project
 Concept e-commerce site for a local boutique, Rhythm Art Gallery (RAG): saris, suits, jewellery, handbags, purses. Interactive floral-Indian-embroidery look, community page, cart, checkout, login, Razorpay payments (payments and login not live yet). See `vision.md`.
@@ -15,7 +15,7 @@ Concept e-commerce site for a local boutique, Rhythm Art Gallery (RAG): saris, s
 
 ## Stack (locked, ask before changing)
 Next.js 16 + TypeScript + Tailwind 4 · Prisma + PostgreSQL · Auth.js (email+password) · Razorpay (test mode) · Motion Primitives · Vercel + Neon + Cloudinary · Vitest/Playwright.
-Installed so far: next, react, typescript, tailwindcss, eslint, vitest, motion. **Not installed (need approval):** prisma, @prisma/client, next-auth, @auth/prisma-adapter, bcryptjs, zod, razorpay, playwright.
+Installed so far: next, react, typescript, tailwindcss, eslint, vitest, motion, prisma, @prisma/client, @prisma/adapter-pg, pg, @types/pg, zod, tsx. **Not installed (need approval):** next-auth, @auth/prisma-adapter, bcryptjs, razorpay, playwright.
 
 ## What is built (front end, all on static data)
 | Route | What |
@@ -36,7 +36,7 @@ Header: logo badge, nav, live cart count, login, animated mobile menu, scroll pr
 `npm run lint` clean · `npm run typecheck` clean · `npm test` 4 files, 13 tests pass · `npm run build` OK (all routes static). Browser-verified at desktop and 375px: no horizontal overflow on any page. `npm audit`: 5 high, dev-only (braces via eslint-config-next); fix would downgrade, not applied.
 
 ## Where I stopped: needs backend or your input
-1. **Database / backend (objective stages 4, 7–10):** no Postgres, Prisma, auth, server cart, orders or payments exist. Login, register and "Place order" only show a preview notice. **Needs your approval for the backend dependencies, and a local or Neon Postgres.**
+1. **Backend (objective stages 7–10):** the database now exists (stage 4) but auth, server cart, orders and payments do not. Login, register and "Place order" still only show a preview notice. Needs your approval for next-auth, @auth/prisma-adapter, bcryptjs, razorpay and playwright.
 2. **Razorpay:** needs your test keys in a local `.env` (never committed).
 3. **Real content from you:** product photos and details, shop address/phone/email/Instagram (placeholders in `src/components/site/nav-links.ts`), real community events and photos (`src/data/community.ts`), real stats (10+ years, 500+ pieces, 12 events are invented, in `components/home/craft-story.tsx`), care/shipping/returns text (placeholder copy), terms and privacy pages (links are not built).
 
@@ -58,11 +58,13 @@ Header: logo badge, nav, live cart count, login, animated mobile menu, scroll pr
 4. Repo root is the parent folder `Rhythm Art Gallery/`, not the website folder. Flattening needs a history rewrite and force-push.
 5. Placeholder shipping rule and return policy (7 days) are mine, not the shop's.
 
-## Stage 4 status (branch `stage-4-data-layer`, draft PR, not merged)
-Done offline and tested: Prisma schema (`prisma/schema.prisma`), `prisma.config.ts`, first migration SQL (`prisma/migrations/20261010000000_init`), seed row mapping (`prisma/seed-data.ts`, 3 tests), npm scripts `migrate`, `db:generate`, `db:seed`, `postinstall`. Installed: prisma 7.10.0, @prisma/client 7.10.0, zod, tsx.
-`npm audit` now also reports 4 high in the `prisma` dev CLI (deepmerge-ts, bundled mysql2; we use Postgres only, CLI not shipped to production). The only fix downgrades Prisma to 6, not applied.
+## Stage 4 status (PR #10, merged)
+- **Neon:** project `rhythmArtGallery` (`withered-brook-06428852`). Branches: `production` (untouched) and `dev` (all development data). This folder is linked to `dev` via `neon link` (`.neon`, git-ignored).
+- **Local env files (all git-ignored):** `.env` holds `DATABASE_URL`, the **direct** (non-pooled) dev string, used by the Prisma CLI. `.env.local` was written by `neon link` and holds the pooled `DATABASE_URL`, `DATABASE_URL_UNPOOLED`, `NEON_BRANCH`, `NEON_AUTH_BASE_URL`, `NEON_AUTH_JWKS_URL`. Next.js reads `.env.local` over `.env`, so the running site uses the pooled string; migrations use the direct one. The Neon Auth variables are unused (we use Auth.js).
+- **Applied:** migration `20261010000000_init` to the `dev` branch; `prisma migrate diff` against the schema reports no drift. Seed loaded 5 categories, 26 products, 5 events (re-runnable, upserts by slug).
+- **Code:** `prisma/schema.prisma`, `prisma.config.ts`, `prisma/seed.ts`, `prisma/seed-data.ts`, `src/lib/db.ts` (client with `@prisma/adapter-pg`), npm scripts `migrate`, `db:generate`, `db:seed`.
+- **Tests:** 6 files, 17 tests pass, including `prisma/seed.db.test.ts`, a read-only check of the seeded database (skipped when `DATABASE_URL` is unset).
+- `npm audit` also reports 4 high in the `prisma` dev CLI (deepmerge-ts, bundled mysql2; we use Postgres only, CLI not shipped). The only fix downgrades Prisma to 6, not applied.
 
-## Next action (needs you)
-1. Create the Neon project and database yourself, then put the connection string in a local `.env` as `DATABASE_URL` (see `.env.example`). Do not paste it in chat.
-2. Approve the Prisma driver adapter: `@prisma/adapter-pg` + `pg` (+ `@types/pg`), which Prisma 7 requires to talk to Postgres. (Or `@prisma/adapter-neon`.)
-Then I apply the migration, write `src/lib/db.ts` and `prisma/seed.ts`, run the seed, move the pages from `src/data` to the database, and merge the PR.
+## Next action
+Objective stage 5: switch the pages from `src/data` to the database (server components reading through `src/lib/db.ts`, with tests). Meanwhile: send real photos, shop details and community content, and approve the stage 7–9 dependencies when ready.

@@ -11,3 +11,4 @@ next-env.d.ts
 /coverage
 /out/
 /src/generated
+.neon
