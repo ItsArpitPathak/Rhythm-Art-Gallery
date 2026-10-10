@@ -10,7 +10,7 @@ Concept e-commerce site for a local boutique (saris, suits, jewellery, handbags/
 ## Where things are
 - Repo: https://github.com/ItsArpitPathak/Rhythm-Art-Gallery (private), branch `main`.
 - Local: `...\javaProject\Rhythm Art Gallery\` is the git root. All project files in `Rhythm Art Gallery website/`.
-- Files: `vision.md` (what/why/scope), `docs/decisions.md` (decisions + reasons), `CLAUDE.md` (rules, commands, style), `.env.example`, `.gitignore`, this file.
+- Files: `vision.md` (what/why/scope), `objective.md` (stages 0–13, approved), `docs/decisions.md` (decisions + reasons), `CLAUDE.md` (rules, commands, style), `.env.example`, `.gitignore`, this file.
 - Preferences for building websites: `~/.claude/global.md` (palette from Realtime Colors, 2 fonts, Haikei SVG, Motion Primitives, one section at a time). Pointer added in `~/.claude/CLAUDE.md`.
 
 ## Locked stack (ask before changing)

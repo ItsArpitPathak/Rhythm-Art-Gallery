@@ -1,6 +1,6 @@
 # Rhythm Art Gallery
 
-Boutique e-commerce concept site. Read `vision.md` first, `docs/decisions.md` for why. Website preferences: `~/.claude/global.md`. App code lives in this folder (`Rhythm Art Gallery website/`).
+Boutique e-commerce concept site. Read `vision.md` first, then `objective.md` (stages; check it to see what is done and what is next), `docs/decisions.md` for why. Website preferences: `~/.claude/global.md`. App code lives in this folder (`Rhythm Art Gallery website/`).
 
 ## Stack (locked, ask before changing)
 Next.js (App Router) + TypeScript + Tailwind · Prisma + PostgreSQL · Auth.js · Razorpay (test mode) · Motion Primitives for animation.
