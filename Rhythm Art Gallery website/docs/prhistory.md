@@ -32,3 +32,8 @@ Before PR #1 there was no PR workflow: docs went straight to `main`, and stage 1
 - Branch `community-ui`. Status: merged.
 - **What:** the community page: an animated timeline of events the shop joined, three "how we show up" pillars, and an event-invite contact link.
 - **Changed in `main`:** added `/community` route; added a fifth placeholder event to `src/data/community.ts`. Home teaser, nav and footer links to `/community` now resolve.
+
+## PR #6 — Login and register UI
+- Branch `auth-ui`. Status: merged.
+- **What:** login and register pages with client-side validation and a preview notice on submit. No account is created: that needs the backend.
+- **Changed in `main`:** added `/login` and `/register` routes, `components/auth/*`, and `src/lib/validation.ts` (+ tests; also holds the address validator used later by checkout). Header and footer Login links now resolve.
