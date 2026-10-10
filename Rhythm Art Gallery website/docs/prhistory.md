@@ -47,3 +47,8 @@ Before PR #1 there was no PR workflow: docs went straight to `main`, and stage 1
 - Branch `polish-and-docs`. Status: merged.
 - **What:** fixed small sideways overflow on the home and community pages on phones; rewrote the handover to say exactly what is built, what is stubbed, and where the front end stops.
 - **Changed in `main`:** layout content wrapper now clips horizontal overflow; `docs/handover.md` rewritten; `docs/objective.md` gained a status table; `docs/decisions.md` gained the front-end-first decisions.
+
+## PR #9 — VS Code terminal profile for npm on Windows
+- Branch `vscode-settings`. Status: merged.
+- **What:** a project-level VS Code setting that opens terminals with a per-session PowerShell execution policy, so npm scripts run without a system-wide policy change.
+- **Changed in `main`:** added `.vscode/settings.json` only. No app code touched.
