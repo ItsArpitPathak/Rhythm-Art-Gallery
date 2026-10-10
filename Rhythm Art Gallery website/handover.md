@@ -2,7 +2,7 @@
 
 Living status doc. Read this first when picking up the project. Updated at the end of every session, successful build, and commit.
 
-**Last updated:** 2026-10-10 · stage 1 built on branch `stage-1-scaffold`, awaiting user review
+**Last updated:** 2026-10-10 · stage 1 merged to `main` (`a480343`); stage 2 started on `stage-2-design-shell`, blocked on user inputs
 
 ## Project
 Concept e-commerce site for a local boutique (saris, suits, jewellery, handbags/purses). Interactive landing, floral Indian embroidery look, login, Razorpay payments. See `vision.md`.
@@ -23,8 +23,9 @@ Next.js + TypeScript + Tailwind · Prisma + PostgreSQL · Auth.js (email+passwor
 | Plan approved | done | Plan file: `~/.claude/plans/uh-i-need-to-clever-firefly.md` |
 | 0. docs | done | vision, decisions, CLAUDE.md, .env.example, .gitignore |
 | Old `requirements.md`, `HLD report.md`, `LLD report.md` | deleted | Obsolete; in git history at `e5a3848` |
-| 1. scaffold | **built, awaiting review** | Branch `stage-1-scaffold`. Next.js 16 + TS + Tailwind 4 + ESLint + Vitest. Lint, typecheck, test, build all pass |
-| 2–13 | not started | See plan file for order |
+| 1. scaffold | **done, merged** | Merged to `main` as `a480343`. Next.js 16 + TS + Tailwind 4 + ESLint + Vitest. Lint, typecheck, test, build all pass |
+| 2. design system + shell | **blocked on user inputs** | Branch `stage-2-design-shell` created, no code yet. Motion Primitives mapping proposed, awaiting user confirmation |
+| 3–13 | not started | See `objective.md` |
 
 ## Commits
 - `e5a3848` Add vision, decisions, project rules and env template
@@ -32,7 +33,7 @@ Next.js + TypeScript + Tailwind · Prisma + PostgreSQL · Auth.js (email+passwor
 - `c3b27cd` Remove obsolete Spring Boot requirements, HLD and LLD
 - `92e171c` Add handover.md
 - `86bde08` Add objective.md (on `main`)
-- stage 1 commit on `stage-1-scaffold` (not yet merged)
+- `7663213` Stage 1 scaffold; `a480343` merge of stage 1 into `main`
 
 ## Checks (lint / type check / tests)
 Stage 1: `npm run lint` clean, `npm run typecheck` clean, `npm test` 1/1 pass, `npm run build` OK. `npm audit`: 5 high, all dev-only (braces ReDoS via eslint-config-next); fix would downgrade eslint-config-next to 14, so not applied.
@@ -53,4 +54,4 @@ Stage 1: no fonts/colours yet (stage 2); page is intentionally blank; `AGENTS.md
 Realtime Colors hex codes · heading + body fonts · Haikei SVG path · shop name/logo, contact, address · community content (events, dates, photos, text).
 
 ## Next action
-User reviews stage 1, merges to `main`. Then stage 2 (design system + shell); needs palette, fonts, Haikei SVG path, shop name/logo.
+Get palette, fonts, Haikei SVG path, shop name/logo/contact from user; confirm Motion Primitives picks; then build tokens + header/footer shell.

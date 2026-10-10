@@ -25,13 +25,13 @@ A working, concept-stage e-commerce site for a local boutique (saris, suits, jew
 ## Stage 0 — Foundation docs ✅
 `vision.md`, `docs/decisions.md`, `CLAUDE.md`, `.env.example`, `.gitignore`, `handover.md`. Stack locked. Old Spring Boot docs removed.
 
-## Stage 1 — Scaffold & tooling ✅ (awaiting review)
+## Stage 1 — Scaffold & tooling ✅
 **Goal:** empty app that builds, lints, type-checks and tests.
 - Needs approval: dependency list (next, react, typescript, tailwindcss, eslint, vitest; later stages add prisma, next-auth, zod, razorpay, motion, bcryptjs, playwright).
 - Next.js + TS + Tailwind; scripts `dev`, `test`, `lint`, `typecheck`; one trivial passing test.
 - **Done when:** `npm run dev` shows a blank page; all three checks green.
 
-## Stage 2 — Design system & site shell
+## Stage 2 — Design system & site shell (in progress, blocked on user inputs)
 **Goal:** the look, applied to header, footer and page layout.
 - **Needs from user:** Realtime Colors hex codes, heading + body fonts, Haikei SVG path, shop name/logo/contact.
 - Propose which Motion Primitives components fit which sections; user confirms before use.
