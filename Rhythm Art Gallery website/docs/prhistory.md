@@ -27,3 +27,8 @@ Before PR #1 there was no PR workflow: docs went straight to `main`, and stage 1
 - Branch `catalogue-ui`. Status: merged.
 - **What:** browse the shop with category tabs, price filter and sort; per-category pages; a new-arrivals page with category tabs; product detail with hover zoom, size and quantity pickers, working Add to bag / Buy now, accordions and related items; styled 404.
 - **Changed in `main`:** added routes `/shop`, `/shop/[category]`, `/new-arrivals`, `/product/[slug]`, `not-found`; components `product-browser`, `add-to-bag`, `zoom-image`, `page-header`; one more copied Motion Primitive (Animated Background). Home-page links to categories and products now resolve.
+
+## PR #5 — Community page
+- Branch `community-ui`. Status: merged.
+- **What:** the community page: an animated timeline of events the shop joined, three "how we show up" pillars, and an event-invite contact link.
+- **Changed in `main`:** added `/community` route; added a fifth placeholder event to `src/data/community.ts`. Home teaser, nav and footer links to `/community` now resolve.
