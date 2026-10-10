@@ -9,5 +9,6 @@ Format: date · decision · why.
 - **2026-10-10 · Images in `public/images/` with naming convention.** Owner replaces files in place; seed data references filenames, so no code change.
 - **2026-10-10 · No GST invoices in v1.** Depends on whether the shop is GST-registered. Simple receipt only until confirmed.
 - **2026-10-10 · Login required to check out; browsing and cart open to guests.** Per original requirement. Guest checkout deferred (may raise conversion; revisit).
-- **2026-10-10 · All project files live in `Rhythm Art Gallery website/`.** No `web/` subfolder; git repo root is its parent `Rhythm Art Gallery/`. User asked for everything inside the website folder. Old Spring Boot docs kept alongside, marked superseded.
+- **2026-10-10 · All project files live in `Rhythm Art Gallery website/`.** No `web/` subfolder; git repo root is its parent `Rhythm Art Gallery/`. User asked for everything inside the website folder.
+- **2026-10-10 · Deleted `requirements.md`, `HLD report.md`, `LLD report.md`.** All written for Spring Boot and a ~150-requirement scope; stack and scope changed. `vision.md` (what/why/scope) plus this file and the per-branch plan replace them. Recoverable from git history (commit e5a3848).
 - **2026-10-10 · One feature per branch, no commit without being asked, ask before new dependencies.** User rule.
