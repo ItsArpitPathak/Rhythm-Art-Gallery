@@ -57,3 +57,8 @@ Before PR #1 there was no PR workflow: docs went straight to `main`, and stage 1
 - Branch `stage-4-data-layer`. Status: merged.
 - **What:** Prisma schema for users, catalogue, carts, orders, payments and community events; first migration, applied to the Neon `dev` branch with no schema drift; idempotent seed script loading the placeholder catalogue (5 categories, 26 products, 5 events); a database client helper; a read-only test that checks the seeded data.
 - **Changed in `main`:** added `prisma/`, `prisma.config.ts`, `src/lib/db.ts`; backend dependencies (prisma, @prisma/client, @prisma/adapter-pg, pg, @types/pg, zod, tsx); npm scripts `migrate`, `db:generate`, `db:seed`, `postinstall`; `.env.example` Neon note; git-ignored generated client and `.neon`. Pages still read `src/data`; the switch to the database is stage 5.
+
+## PR #11 — Session handoff
+- Branch `session-handoff`. Status: merged.
+- **What:** an end-of-session summary: where `main` stands, how to resume, next steps, open questions and known gaps.
+- **Changed in `main`:** added `docs/handoff.md` only. No app code touched.
