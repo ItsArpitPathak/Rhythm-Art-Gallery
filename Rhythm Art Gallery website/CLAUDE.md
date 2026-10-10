@@ -1,6 +1,6 @@
 # Rhythm Art Gallery
 
-Boutique e-commerce concept site. Read `vision.md` first, then `objective.md` (stages; check it to see what is done and what is next), `docs/decisions.md` for why. Website preferences: `~/.claude/global.md`. App code lives in this folder (`Rhythm Art Gallery website/`).
+Boutique e-commerce concept site. Read `docs/vision.md` first, then `docs/objective.md` (stages; check it to see what is done and what is next), `docs/decisions.md` for why. Website preferences: `~/.claude/global.md`. App code lives in this folder (`Rhythm Art Gallery website/`): `src/` (app, components, lib), `public/` (brand, bg, images), `docs/`.
 
 ## Stack (locked, ask before changing)
 Next.js (App Router) + TypeScript + Tailwind · Prisma + PostgreSQL · Auth.js · Razorpay (test mode) · Motion Primitives for animation.
@@ -20,7 +20,7 @@ Next.js (App Router) + TypeScript + Tailwind · Prisma + PostgreSQL · Auth.js �
 - Ask before adding a new dependency.
 - Small reviewable changes. One feature per branch. Commit/push only when asked.
 - Record decisions and reasons in `docs/decisions.md`.
-- Keep `handover.md` current: update it at the end of every session, successful build, and successful commit (status, commits, checks, skipped items, open questions, next action).
+- Keep `docs/handover.md` current: update it at the end of every session, successful build, and successful commit (status, commits, checks, skipped items, open questions, next action).
 - Build UI one section at a time; stop after each. Only palette/fonts from the user. Copy Motion Primitives source, don't rewrite.
 
 ## Style

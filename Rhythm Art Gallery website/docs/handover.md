@@ -2,15 +2,15 @@
 
 Living status doc. Read this first when picking up the project. Updated at the end of every session, successful build, and commit.
 
-**Last updated:** 2026-10-10 · stage 1 built on branch `stage-1-scaffold`, awaiting user review
+**Last updated:** 2026-10-10 · stage 1 merged to `main` (`a480343`); stage 2 built on `stage-2-design-shell`, awaiting review
 
 ## Project
-Concept e-commerce site for a local boutique (saris, suits, jewellery, handbags/purses). Interactive landing, floral Indian embroidery look, login, Razorpay payments. See `vision.md`.
+Concept e-commerce site for a local boutique (saris, suits, jewellery, handbags/purses). Interactive landing, floral Indian embroidery look, login, Razorpay payments. See `docs/vision.md`.
 
 ## Where things are
 - Repo: https://github.com/ItsArpitPathak/Rhythm-Art-Gallery (private), branch `main`.
 - Local: `...\javaProject\Rhythm Art Gallery\` is the git root. All project files in `Rhythm Art Gallery website/`.
-- Files: `vision.md` (what/why/scope), `objective.md` (stages 0–13, approved), `docs/decisions.md` (decisions + reasons), `CLAUDE.md` (rules, commands, style), `.env.example`, `.gitignore`, this file.
+- Layout: `docs/` (vision, objective, decisions, this handover) · `src/` (app, components, lib) · `public/` (brand logo, bg svg, images) · root: `CLAUDE.md`, `.env.example`, config files.
 - Preferences for building websites: `~/.claude/global.md` (palette from Realtime Colors, 2 fonts, Haikei SVG, Motion Primitives, one section at a time). Pointer added in `~/.claude/CLAUDE.md`.
 
 ## Locked stack (ask before changing)
@@ -23,8 +23,9 @@ Next.js + TypeScript + Tailwind · Prisma + PostgreSQL · Auth.js (email+passwor
 | Plan approved | done | Plan file: `~/.claude/plans/uh-i-need-to-clever-firefly.md` |
 | 0. docs | done | vision, decisions, CLAUDE.md, .env.example, .gitignore |
 | Old `requirements.md`, `HLD report.md`, `LLD report.md` | deleted | Obsolete; in git history at `e5a3848` |
-| 1. scaffold | **built, awaiting review** | Branch `stage-1-scaffold`. Next.js 16 + TS + Tailwind 4 + ESLint + Vitest. Lint, typecheck, test, build all pass |
-| 2–13 | not started | See plan file for order |
+| 1. scaffold | **done, merged** | Merged to `main` as `a480343`. Next.js 16 + TS + Tailwind 4 + ESLint + Vitest. Lint, typecheck, test, build all pass |
+| 2. design system + shell | **built, awaiting review** | Branch `stage-2-design-shell`. Palette, fonts, bg SVGs, header (Disclosure mobile menu, ScrollProgress bar), footer, logo. Checked in browser at desktop + 375px |
+| 3–13 | not started | See `docs/objective.md` |
 
 ## Commits
 - `e5a3848` Add vision, decisions, project rules and env template
@@ -32,13 +33,13 @@ Next.js + TypeScript + Tailwind · Prisma + PostgreSQL · Auth.js (email+passwor
 - `c3b27cd` Remove obsolete Spring Boot requirements, HLD and LLD
 - `92e171c` Add handover.md
 - `86bde08` Add objective.md (on `main`)
-- stage 1 commit on `stage-1-scaffold` (not yet merged)
+- `7663213` Stage 1 scaffold; `a480343` merge of stage 1 into `main`
 
 ## Checks (lint / type check / tests)
-Stage 1: `npm run lint` clean, `npm run typecheck` clean, `npm test` 1/1 pass, `npm run build` OK. `npm audit`: 5 high, all dev-only (braces ReDoS via eslint-config-next); fix would downgrade eslint-config-next to 14, so not applied.
+Stage 2: lint clean, typecheck clean, test 1/1, build OK, browser check OK, no console errors. Stage 1: `npm run lint` clean, `npm run typecheck` clean, `npm test` 1/1 pass, `npm run build` OK. `npm audit`: 5 high, all dev-only (braces ReDoS via eslint-config-next); fix would downgrade eslint-config-next to 14, so not applied.
 
 ## Skipped / stubbed / mocked / hard-coded
-Stage 1: no fonts/colours yet (stage 2); page is intentionally blank; `AGENTS.md` came from the Next.js template (kept). Deferred by design: GST invoices, courier API, email, reviews, wishlist, coupons, admin panel (step 12, optional).
+Stage 2: cart count hard-coded 0; nav links (/shop, /new-arrivals, /community, /cart, /login) 404 until their stages; shop phone/email/address/Instagram are placeholders (`src/components/site/nav-links.ts`); home is a placeholder until stage 3; footer has no year (Next 16 cache components forbid `new Date()` in a server render); `cn` has no tailwind-merge; logo is a JPG with its own pink background, shown as a round badge. Stage 1: `AGENTS.md` came from the Next.js template (kept). Deferred by design: GST invoices, courier API, email, reviews, wishlist, coupons, admin panel (step 12, optional).
 
 ## Open questions / assumptions to confirm
 1. Stage 1 deps installed (next, react, typescript, tailwindcss, eslint, vitest, @types/node bumped to 24 to satisfy vitest). Assumed "start stage 1" approved those; later-stage deps (prisma, next-auth, zod, razorpay, motion, bcryptjs, playwright) still need approval.
@@ -53,4 +54,4 @@ Stage 1: no fonts/colours yet (stage 2); page is intentionally blank; `AGENTS.md
 Realtime Colors hex codes · heading + body fonts · Haikei SVG path · shop name/logo, contact, address · community content (events, dates, photos, text).
 
 ## Next action
-User reviews stage 1, merges to `main`. Then stage 2 (design system + shell); needs palette, fonts, Haikei SVG path, shop name/logo.
+User reviews stage 2 and merges; supply real shop contact details. Then stage 3 (landing page, section by section).

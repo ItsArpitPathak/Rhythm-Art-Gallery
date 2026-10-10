@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+/* Palette: derived from the RAG logo (blush, cream, navy) plus rani pink,
+   marigold and peacock teal for vibrance and a hint of mountain lake. */
+@theme inline {
+  --color-paper: #fffdf9;
+  --color-cream: #fdeed1;
+  --color-blush: #ffcfdf;
+  --color-rani: #c2185b;
+  --color-marigold: #f5a524;
+  --color-peacock: #0e7c86;
+  --color-ink: #1e2a4f;
+
+  --font-heading: var(--font-playfair);
+  --font-body: var(--font-dm-sans);
+}
+
+body {
+  background-color: var(--color-paper);
+  background-image: url("/bg/mountains.svg");
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-size: 100% auto;
+  background-attachment: fixed;
+  color: var(--color-ink);
+  font-family: var(--font-body), sans-serif;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading), serif;
+}
+
+/* Embroidery strip: tiled flower motif, used as a divider. */
+.embroidery-border {
+  background-image: url("/bg/embroidery-border.svg");
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+}
