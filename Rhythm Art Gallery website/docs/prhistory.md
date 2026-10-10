@@ -64,6 +64,6 @@ Before PR #1 there was no PR workflow: docs went straight to `main`, and stage 1
 - **Changed in `main`:** added `docs/handoff.md` only. No app code touched.
 
 ## PR #12 — UI polish: motion, category bento, mobile tap targets
-- Branch `ui-polish-mobile`. Status: open (not merged).
+- Branch `ui-polish-mobile`. Status: merged (`78a8dd3`).
 - **What:** removed the hero glow loop and rotating word line; press feedback and 300ms ease-out hovers; add-to-bag label cross-fade, cart badge bump, sliding nav pill; reduced-motion support; category tiles as a bento; `min-h-dvh`; background moved to a fixed layer; all mobile controls at least 44px with 16px inputs on phones.
 - **Changed in `main` (once merged):** 17 files under `src/` plus `docs/handover.md`; added `src/components/site/motion.tsx`. No dependency, schema or API changes.
