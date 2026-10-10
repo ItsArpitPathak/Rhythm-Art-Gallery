@@ -40,6 +40,15 @@ export const COMMUNITY_EVENTS: CommunityEvent[] = [
     kind: "Exhibited",
   },
   {
+    slug: "festive-fashion-showcase",
+    title: "Festive Fashion Showcase",
+    place: "Grand Ballroom",
+    date: "September 2025",
+    summary: "One of a handful of boutiques selected to present bridal and festive wear on the runway.",
+    image: "/images/story/embroidered-lehenga-1.jpg",
+    kind: "Selected",
+  },
+  {
     slug: "embroidery-learning-circle",
     title: "Embroidery Learning Circle",
     place: "Boutique studio",
