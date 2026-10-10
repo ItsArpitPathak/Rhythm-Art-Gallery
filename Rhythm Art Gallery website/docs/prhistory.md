@@ -37,3 +37,8 @@ Before PR #1 there was no PR workflow: docs went straight to `main`, and stage 1
 - Branch `auth-ui`. Status: merged.
 - **What:** login and register pages with client-side validation and a preview notice on submit. No account is created: that needs the backend.
 - **Changed in `main`:** added `/login` and `/register` routes, `components/auth/*`, and `src/lib/validation.ts` (+ tests; also holds the address validator used later by checkout). Header and footer Login links now resolve.
+
+## PR #7 — Checkout UI
+- Branch `checkout-ui`. Status: merged.
+- **What:** the checkout screen: address form with validation, payment-method choice, order summary from the cart. Place order shows a preview notice; no order or payment happens without the backend.
+- **Changed in `main`:** added `/checkout` route, `components/shop/checkout-view.tsx`, `src/lib/india.ts` (state list). "Proceed to checkout" and "Buy now" now land on a real page.
