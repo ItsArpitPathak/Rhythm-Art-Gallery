@@ -1,0 +1,9 @@
+{
+  "terminal.integrated.profiles.windows": {
+    "PowerShell (RAG)": {
+      "source": "PowerShell",
+      "args": ["-NoLogo", "-NoExit", "-ExecutionPolicy", "RemoteSigned"]
+    }
+  },
+  "terminal.integrated.defaultProfile.windows": "PowerShell (RAG)"
+}
