@@ -17,3 +17,8 @@ Before PR #1 there was no PR workflow: docs went straight to `main`, and stage 1
 - Branch `stage-3-landing`. Status: merged.
 - **What:** full landing page on static data: hero (animated headline, rotating category word, tilting arch photo, magnetic glowing CTA), category tiles, new-arrivals scroll strip, craft story with count-up stats, community teaser, visit banner. 32 placeholder Unsplash photos plus a README for swapping them.
 - **Changed in `main`:** home page rebuilt from the placeholder; added `src/components/home/*`, `shop/product-card`, `site/section-heading`, `src/data/{catalog,community}.ts` with a data/image-integrity test, `formatPrice`, eight more copied Motion Primitives, and `public/images/**`.
+
+## PR #3 — Cart UI (browser-only cart)
+- Branch `cart-ui`. Status: merged.
+- **What:** a working cart that lives in the browser: add/merge lines, change quantity (max 10), remove, totals with a placeholder shipping rule, empty state, and a live cart count in the header. Backend cart is deferred.
+- **Changed in `main`:** added `src/lib/{cart,use-cart}.ts` (+ tests), `components/shop/cart-view.tsx`, `/cart` route; header badge now reads the real count instead of a hard-coded 0; Vitest got an `@` alias.
