@@ -2,7 +2,7 @@
 
 Living status doc. Read this first when picking up the project. Updated at the end of every session, successful build, and commit.
 
-**Last updated:** 2026-10-10 · after commit `c3b27cd` + handover added
+**Last updated:** 2026-10-10 · stage 1 built on branch `stage-1-scaffold`, awaiting user review
 
 ## Project
 Concept e-commerce site for a local boutique (saris, suits, jewellery, handbags/purses). Interactive landing, floral Indian embroidery look, login, Razorpay payments. See `vision.md`.
@@ -23,22 +23,25 @@ Next.js + TypeScript + Tailwind · Prisma + PostgreSQL · Auth.js (email+passwor
 | Plan approved | done | Plan file: `~/.claude/plans/uh-i-need-to-clever-firefly.md` |
 | 0. docs | done | vision, decisions, CLAUDE.md, .env.example, .gitignore |
 | Old `requirements.md`, `HLD report.md`, `LLD report.md` | deleted | Obsolete; in git history at `e5a3848` |
-| 1. scaffold | **not started** | Waiting on dependency approval |
+| 1. scaffold | **built, awaiting review** | Branch `stage-1-scaffold`. Next.js 16 + TS + Tailwind 4 + ESLint + Vitest. Lint, typecheck, test, build all pass |
 | 2–13 | not started | See plan file for order |
 
 ## Commits
 - `e5a3848` Add vision, decisions, project rules and env template
 - `6867a40` Move all project files into Rhythm Art Gallery website folder
 - `c3b27cd` Remove obsolete Spring Boot requirements, HLD and LLD
+- `92e171c` Add handover.md
+- `86bde08` Add objective.md (on `main`)
+- stage 1 commit on `stage-1-scaffold` (not yet merged)
 
 ## Checks (lint / type check / tests)
-Not run yet. No code exists.
+Stage 1: `npm run lint` clean, `npm run typecheck` clean, `npm test` 1/1 pass, `npm run build` OK. `npm audit`: 5 high, all dev-only (braces ReDoS via eslint-config-next); fix would downgrade eslint-config-next to 14, so not applied.
 
 ## Skipped / stubbed / mocked / hard-coded
-Nothing built yet. Deferred by design: GST invoices, courier API, email, reviews, wishlist, coupons, admin panel (step 12, optional).
+Stage 1: no fonts/colours yet (stage 2); page is intentionally blank; `AGENTS.md` came from the Next.js template (kept). Deferred by design: GST invoices, courier API, email, reviews, wishlist, coupons, admin panel (step 12, optional).
 
 ## Open questions / assumptions to confirm
-1. Dependency list approval (next, react, typescript, tailwindcss, prisma, @prisma/client, next-auth, @auth/prisma-adapter, bcryptjs, zod, razorpay, motion, vitest, eslint, playwright).
+1. Stage 1 deps installed (next, react, typescript, tailwindcss, eslint, vitest, @types/node bumped to 24 to satisfy vitest). Assumed "start stage 1" approved those; later-stage deps (prisma, next-auth, zod, razorpay, motion, bcryptjs, playwright) still need approval.
 2. Make `Rhythm Art Gallery website/` the git root (needs history rewrite + force push)? Currently its parent is the root.
 3. `npx prisma migrate dev` is the intended migrate command?
 4. Repo private OK? Name is `Rhythm-Art-Gallery` (GitHub disallows spaces).
@@ -50,4 +53,4 @@ Nothing built yet. Deferred by design: GST invoices, courier API, email, reviews
 Realtime Colors hex codes · heading + body fonts · Haikei SVG path · shop name/logo, contact, address · community content (events, dates, photos, text).
 
 ## Next action
-Get dependency approval, then branch `scaffold` and set up Next.js, Tailwind, ESLint, Vitest and the npm scripts (`dev`, `test`, `lint`, `typecheck`).
+User reviews stage 1, merges to `main`. Then stage 2 (design system + shell); needs palette, fonts, Haikei SVG path, shop name/logo.
