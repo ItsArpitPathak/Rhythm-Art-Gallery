@@ -3,12 +3,12 @@
 Snapshot for whoever resumes next. `docs/handover.md` is the long-lived status doc; this file is the session summary and the exact way to pick up. No secrets are stored here.
 
 ## Where things stand
-- `main` is at the merge of PR #10 (`4160ad2`) plus this handoff PR. 10 PRs merged, all listed in `docs/prhistory.md`.
+- `main` includes PR #12 (`78a8dd3`), the UI polish pass, plus the earlier handoff PR #11. 12 PRs merged, all listed in `docs/prhistory.md`.
 - **Front end:** complete on the static data (home, shop, categories, new arrivals, product page, cart, checkout preview, login/register preview, community, 404). Browser-only cart works.
 - **Data layer (stage 4):** done. Neon project `rhythmArtGallery`, `dev` branch holds the migrated schema and the seeded placeholder catalogue (5 categories, 26 products, 5 events). `src/lib/db.ts` is the Prisma client (`@prisma/adapter-pg`).
 - **Pages still read `src/data/*.ts`, not the database.** Switching them is stage 5.
 - **Checks on `main`:** lint clean, typecheck clean, 17 of 17 tests pass (includes a read-only test against the Neon dev database), build OK.
-- **Open PR #12** (`ui-polish-mobile`, commit `8ff03e8`): motion tuning, category bento, mobile tap targets. Lint, typecheck and 17 tests pass; no CI configured; auto-merge off. Merge it before starting stage 5 so work branches from the polished UI. Not tested on a real phone (measured at 375px with browser emulation only).
+- **PR #12 merged** (`78a8dd3`): motion tuning, category bento, mobile tap targets. Lint, typecheck and 17 tests pass; no CI is configured. Not tested on a real phone (measured at 375px with browser emulation only). Branch `ui-polish-mobile` still exists on GitHub; delete if unwanted.
 - Dev server is **not** running. No background tasks are running.
 
 ## What happened this session
@@ -33,6 +33,7 @@ npm run db:seed    # re-runnable, upserts by slug
 - Workflow: one branch and one PR per stage, merged after lint/typecheck/test/build pass, with an entry added to `docs/prhistory.md`. Replies in caveman style, code in ponytail style (see `CLAUDE.md`).
 
 ## Next steps, in order
+0. Optional quick wins: try a real-phone check of PR #12; retry `npx impeccable install`; delete the merged branch `ui-polish-mobile`.
 1. **Stage 5:** read products, categories and events from the database in server components via `src/lib/db.ts` (keep the look identical), with tests. Then drop or shrink `src/data/*.ts` (the seed still uses it as the source).
 2. **Stage 7 (auth):** needs approval for `next-auth`, `@auth/prisma-adapter`, `bcryptjs` (zod is installed). Real login, protected routes, server-side validation.
 3. **Stage 8 (server cart + merge on login), stage 9 (Razorpay):** needs `razorpay` and your Razorpay **test keys** in `.env`.
