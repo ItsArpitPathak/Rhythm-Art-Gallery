@@ -52,3 +52,8 @@ Before PR #1 there was no PR workflow: docs went straight to `main`, and stage 1
 - Branch `vscode-settings`. Status: merged.
 - **What:** a project-level VS Code setting that opens terminals with a per-session PowerShell execution policy, so npm scripts run without a system-wide policy change.
 - **Changed in `main`:** added `.vscode/settings.json` only. No app code touched.
+
+## PR #10 — Stage 4: data layer (schema and migration)
+- Branch `stage-4-data-layer`. Status: **open, draft** (not merged).
+- **What:** Prisma schema for users, catalogue, carts, orders, payments and community events; first migration SQL written offline; seed mapping from the static data, with tests. Waiting on the owner's Neon database and approval for the Prisma driver adapter before it can be applied and merged.
+- **Will change in `main` when merged:** adds `prisma/`, `prisma.config.ts`, backend dependencies (prisma, @prisma/client, zod, tsx), npm scripts `migrate`/`db:*`/`postinstall`, `.env.example` Neon note, git-ignored generated client.
