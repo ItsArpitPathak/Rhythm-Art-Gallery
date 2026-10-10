@@ -20,10 +20,10 @@ export function Footer() {
 
         <nav aria-label="Footer" className="space-y-3">
           <h2 className="font-heading text-lg text-paper">Explore</h2>
-          <ul className="space-y-2 text-sm">
+          <ul className="text-sm">
             {NAV_LINKS.map((l) => (
               <li key={l.href}>
-                <Link href={l.href} className="hover:text-marigold">{l.label}</Link>
+                <Link href={l.href} className="inline-flex min-h-11 items-center hover:text-marigold">{l.label}</Link>
               </li>
             ))}
           </ul>
@@ -31,11 +31,11 @@ export function Footer() {
 
         <div className="space-y-3">
           <h2 className="font-heading text-lg text-paper">Visit & contact</h2>
-          <ul className="space-y-2 text-sm text-cream/80">
-            <li>{SHOP.address}</li>
-            <li><a href={`tel:${SHOP.phone.replace(/\s/g, "")}`} className="hover:text-marigold">{SHOP.phone}</a></li>
-            <li><a href={`mailto:${SHOP.email}`} className="hover:text-marigold">{SHOP.email}</a></li>
-            <li><a href={SHOP.instagram} className="hover:text-marigold" rel="noopener noreferrer" target="_blank">Instagram</a></li>
+          <ul className="text-sm text-cream/80">
+            <li className="pb-2">{SHOP.address}</li>
+            <li><a href={`tel:${SHOP.phone.replace(/\s/g, "")}`} className="inline-flex min-h-11 items-center hover:text-marigold">{SHOP.phone}</a></li>
+            <li><a href={`mailto:${SHOP.email}`} className="inline-flex min-h-11 items-center hover:text-marigold">{SHOP.email}</a></li>
+            <li><a href={SHOP.instagram} className="inline-flex min-h-11 items-center hover:text-marigold" rel="noopener noreferrer" target="_blank">Instagram</a></li>
           </ul>
         </div>
       </div>

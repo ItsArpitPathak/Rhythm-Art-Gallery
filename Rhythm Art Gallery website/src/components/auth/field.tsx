@@ -13,7 +13,7 @@ export function Field({ label, error, className, ...input }: Props) {
         aria-invalid={Boolean(error)}
         aria-describedby={error ? `${id}-err` : undefined}
         className={cn(
-          "w-full rounded-xl border bg-paper px-4 py-2.5 text-sm outline-none transition-colors focus:border-rani focus:ring-2 focus:ring-rani/20",
+          "w-full rounded-xl border bg-paper min-h-11 px-4 py-2.5 text-base outline-none md:text-sm transition-colors focus:border-rani focus:ring-2 focus:ring-rani/20",
           error ? "border-rani" : "border-ink/20",
           className,
         )}

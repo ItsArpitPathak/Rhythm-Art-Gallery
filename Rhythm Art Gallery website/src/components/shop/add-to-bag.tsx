@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import { MAX_QTY } from "@/lib/cart";
 import { useCart } from "@/lib/use-cart";
@@ -34,7 +35,7 @@ export function AddToBag({ slug, sizes }: { slug: string; sizes?: string[] }) {
               <label
                 key={s}
                 className={cn(
-                  "cursor-pointer rounded-full border px-4 py-2 text-sm transition-colors",
+                  "cursor-pointer rounded-full border px-4 py-2 text-sm transition-[transform,background-color,color,border-color] duration-150 ease-out active:scale-[0.97]",
                   size === s ? "border-rani bg-rani text-paper" : "border-ink/20 hover:border-rani",
                 )}
               >
@@ -49,21 +50,32 @@ export function AddToBag({ slug, sizes }: { slug: string; sizes?: string[] }) {
 
       <div className="flex items-center gap-4">
         <div className="flex items-center rounded-full ring-1 ring-ink/20">
-          <button type="button" aria-label="Decrease quantity" className="size-10 rounded-full hover:bg-blush/60" onClick={() => setQty((q) => Math.max(1, q - 1))}>−</button>
+          <button type="button" aria-label="Decrease quantity" className="size-11 rounded-full transition-[transform,background-color,color,border-color] duration-150 ease-out active:scale-[0.97] hover:bg-blush/60" onClick={() => setQty((q) => Math.max(1, q - 1))}>−</button>
           <span className="w-8 text-center tabular-nums" aria-live="polite">{qty}</span>
-          <button type="button" aria-label="Increase quantity" className="size-10 rounded-full hover:bg-blush/60" onClick={() => setQty((q) => Math.min(MAX_QTY, q + 1))}>+</button>
+          <button type="button" aria-label="Increase quantity" className="size-11 rounded-full transition-[transform,background-color,color,border-color] duration-150 ease-out active:scale-[0.97] hover:bg-blush/60" onClick={() => setQty((q) => Math.min(MAX_QTY, q + 1))}>+</button>
         </div>
         <button
           type="button"
-          className="flex-1 rounded-full bg-rani px-6 py-3 text-sm font-semibold text-paper transition-colors hover:bg-ink"
+          className="flex-1 rounded-full bg-rani px-6 py-3 text-sm font-semibold text-paper transition-[transform,background-color,color,border-color] duration-150 ease-out active:scale-[0.97] hover:bg-ink"
           onClick={() => { if (commit()) { setAdded(true); setTimeout(() => setAdded(false), 2500); } }}
         >
-          {added ? "Added to bag ✓" : "Add to bag"}
+          <AnimatePresence mode="popLayout" initial={false}>
+            <motion.span
+              key={added ? "added" : "add"}
+              className="block"
+              initial={{ opacity: 0, scale: 0.9, filter: "blur(3px)" }}
+              animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+              exit={{ opacity: 0, scale: 0.9, filter: "blur(3px)" }}
+              transition={{ duration: 0.18, ease: [0.23, 1, 0.32, 1] }}
+            >
+              {added ? "Added to bag ✓" : "Add to bag"}
+            </motion.span>
+          </AnimatePresence>
         </button>
       </div>
       <button
         type="button"
-        className="w-full rounded-full border border-rani px-6 py-3 text-sm font-semibold text-rani transition-colors hover:bg-rani hover:text-paper"
+        className="w-full rounded-full border border-rani px-6 py-3 text-sm font-semibold text-rani transition-[transform,background-color,color,border-color] duration-150 ease-out active:scale-[0.97] hover:bg-rani hover:text-paper"
         onClick={() => { if (commit()) router.push("/checkout"); }}
       >
         Buy now

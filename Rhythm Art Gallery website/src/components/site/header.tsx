@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "motion/react";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Disclosure, DisclosureContent, DisclosureTrigger } from "@/components/motion-primitives/disclosure";
@@ -24,8 +25,8 @@ export function Header() {
   const { count: CART_COUNT } = useCart();
   const link = (href: string) =>
     cn(
-      "rounded-full px-4 py-2 text-sm font-medium transition-colors hover:bg-blush/60 hover:text-rani",
-      pathname === href && "bg-blush text-rani",
+      "relative rounded-full px-4 py-2 text-sm font-medium transition-colors duration-150 hover:bg-blush/60 hover:text-rani",
+      pathname === href && "text-rani",
     );
 
   return (
@@ -51,25 +52,38 @@ export function Header() {
           <nav className="hidden items-center gap-1 md:flex" aria-label="Main">
             {NAV_LINKS.map((l) => (
               <Link key={l.href} href={l.href} className={link(l.href)}>
+                {pathname === l.href && (
+                  <motion.span
+                    layoutId="nav-active"
+                    className="absolute inset-0 -z-10 rounded-full bg-blush"
+                    transition={{ type: "spring", duration: 0.35, bounce: 0.15 }}
+                  />
+                )}
                 {l.label}
               </Link>
             ))}
           </nav>
 
           <div className="flex items-center gap-1">
-            <Link href="/cart" className="relative rounded-full p-2 hover:bg-blush/60 hover:text-rani" aria-label={`Cart, ${CART_COUNT} items`}>
+            <Link href="/cart" className="relative grid size-11 place-items-center rounded-full hover:bg-blush/60 hover:text-rani" aria-label={`Cart, ${CART_COUNT} items`}>
               <Icon d="M6 7h13l-1.5 9h-10zM6 7 5 3H2M9 20.5h.01M16 20.5h.01" />
               {CART_COUNT > 0 && (
-                <span className="absolute -right-0.5 -top-0.5 grid size-4 place-items-center rounded-full bg-rani text-[10px] font-semibold text-paper">
+                <motion.span
+                  key={CART_COUNT}
+                  initial={{ scale: 1.5 }}
+                  animate={{ scale: 1 }}
+                  transition={{ type: "spring", duration: 0.3, bounce: 0.4 }}
+                  className="absolute right-1 top-1 grid size-4 place-items-center rounded-full bg-rani text-[10px] font-semibold text-paper"
+                >
                   {CART_COUNT}
-                </span>
+                </motion.span>
               )}
             </Link>
-            <Link href="/login" className="hidden rounded-full bg-rani px-4 py-2 text-sm font-medium text-paper transition-colors hover:bg-ink sm:block">
+            <Link href="/login" className="hidden rounded-full bg-rani px-4 py-2 text-sm font-medium text-paper transition-[transform,background-color,color,border-color] duration-150 ease-out active:scale-[0.97] hover:bg-ink sm:block">
               Login
             </Link>
             <DisclosureTrigger>
-              <button type="button" className="rounded-full p-2 hover:bg-blush/60 md:hidden" aria-label="Menu">
+              <button type="button" className="grid size-11 place-items-center rounded-full hover:bg-blush/60 md:hidden" aria-label="Menu">
                 <Icon d={open ? "M6 6l12 12M18 6 6 18" : "M4 7h16M4 12h16M4 17h16"} />
               </button>
             </DisclosureTrigger>

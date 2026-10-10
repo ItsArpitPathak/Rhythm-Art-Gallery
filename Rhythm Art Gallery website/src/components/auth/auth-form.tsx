@@ -41,14 +41,14 @@ export function AuthForm({ mode }: { mode: Mode }) {
       {mode === "register" && (
         <Field label="Confirm password" type={showPw ? "text" : "password"} autoComplete="new-password" value={values.confirm} onChange={set("confirm")} error={errors.confirm} />
       )}
-      <label className="flex items-center gap-2 text-xs text-ink/70">
-        <input type="checkbox" checked={showPw} onChange={(e) => setShowPw(e.target.checked)} className="accent-rani" /> Show password
+      <label className="flex min-h-11 items-center gap-2 text-xs text-ink/70">
+        <input type="checkbox" checked={showPw} onChange={(e) => setShowPw(e.target.checked)} className="size-5 accent-rani" /> Show password
       </label>
 
       {mode === "register" && (
         <div>
-          <label className="flex items-start gap-2 text-sm">
-            <input type="checkbox" checked={values.terms} onChange={set("terms")} className="mt-1 accent-rani" />
+          <label className="flex min-h-11 items-center gap-2 text-sm">
+            <input type="checkbox" checked={values.terms} onChange={set("terms")} className="size-5 shrink-0 accent-rani" />
             <span>I accept the terms and privacy policy.</span>
           </label>
           {errors.terms && <p role="alert" className="mt-1 text-xs text-rani">{errors.terms}</p>}
@@ -67,9 +67,9 @@ export function AuthForm({ mode }: { mode: Mode }) {
 
       <p className="text-center text-sm text-ink/70">
         {mode === "login" ? (
-          <>New here? <Link href="/register" className="font-semibold text-rani underline">Create an account</Link></>
+          <>New here? <Link href="/register" className="-my-3 inline-block py-3 font-semibold text-rani underline">Create an account</Link></>
         ) : (
-          <>Already registered? <Link href="/login" className="font-semibold text-rani underline">Log in</Link></>
+          <>Already registered? <Link href="/login" className="-my-3 inline-block py-3 font-semibold text-rani underline">Log in</Link></>
         )}
       </p>
     </form>

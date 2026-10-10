@@ -32,7 +32,7 @@ export function CommunityTeaser() {
         ))}
       </div>
       <div className="mt-10 text-center">
-        <Link href="/community" className="inline-block rounded-full bg-peacock px-6 py-2.5 text-sm font-semibold text-paper transition-colors hover:bg-ink">
+        <Link href="/community" className="inline-block rounded-full bg-peacock px-6 py-3 text-sm font-semibold text-paper transition-[transform,background-color,color] duration-150 ease-out active:scale-[0.97] hover:bg-ink">
           Our community work
         </Link>
       </div>

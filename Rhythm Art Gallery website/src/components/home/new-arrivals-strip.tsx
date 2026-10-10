@@ -21,7 +21,7 @@ export function NewArrivalsStrip() {
         </ul>
       </div>
       <div className="mt-4 text-center">
-        <Link href="/new-arrivals" className="inline-block rounded-full border border-rani px-6 py-2.5 text-sm font-semibold text-rani transition-colors hover:bg-rani hover:text-paper">
+        <Link href="/new-arrivals" className="inline-block rounded-full border border-rani px-6 py-3 text-sm font-semibold text-rani transition-[transform,background-color,color] duration-150 ease-out active:scale-[0.97] hover:bg-rani hover:text-paper">
           View all new arrivals
         </Link>
       </div>

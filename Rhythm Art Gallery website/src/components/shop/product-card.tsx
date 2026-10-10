@@ -13,7 +13,7 @@ export function ProductCard({ product, sizes = "(min-width: 1024px) 25vw, 50vw" 
           alt={name}
           fill
           sizes={sizes}
-          className="object-cover transition-transform duration-700 group-hover:scale-105"
+          className="object-cover transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-105"
         />
         {isNew && (
           <span className="absolute left-3 top-3 rounded-full bg-marigold px-3 py-1 text-xs font-semibold text-ink">New</span>

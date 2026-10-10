@@ -30,7 +30,7 @@ export function ProductBrowser({ products, showTabs = true }: { products: Produc
     .filter((p) => RANGES[range].test(price(p)))
     .sort((a, b) => (sort === "low" ? price(a) - price(b) : sort === "high" ? price(b) - price(a) : 0));
 
-  const select = "rounded-full border border-ink/20 bg-paper px-4 py-2 text-sm focus:border-rani focus:outline-none";
+  const select = "rounded-full border border-ink/20 bg-paper min-h-11 px-4 py-2 text-base focus:border-rani focus:outline-none md:min-h-0 md:text-sm";
 
   return (
     <div>
@@ -50,7 +50,7 @@ export function ProductBrowser({ products, showTabs = true }: { products: Produc
                   type="button"
                   role="tab"
                   aria-selected={cat === t.slug}
-                  className="rounded-full px-4 py-2 text-sm font-medium transition-colors data-[checked=true]:text-paper"
+                  className="min-h-11 rounded-full px-4 py-2 text-sm font-medium transition-colors data-[checked=true]:text-paper md:min-h-0"
                 >
                   {t.name}
                 </button>
