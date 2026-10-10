@@ -16,4 +16,9 @@ Format: date · decision · why.
 - **2026-10-10 · Background = hand-written layered-mountain SVG (`public/bg/mountains.svg`) + embroidery strip (`public/bg/embroidery-border.svg`), not from Haikei.** User allowed any SVG. Replaceable by dropping in a Haikei file with the same name.
 - **2026-10-10 · Motion Primitives sources copied into `src/components/motion-primitives/`; excluded from ESLint.** Copied as published with two tiny type fixes (React 19 typings, a `motion` option missing in the installed version), marked in comments. Added `motion`; `cn` util is a 1-line local version (no clsx/tailwind-merge).
 - **2026-10-10 · Folder layout: `docs/`, `src/{app,components,lib}`, `public/{brand,bg,images}`.** Tidier root; Next config files stay at root by convention.
+- **2026-10-10 · Front end first on static data, one PR per stage, merged without waiting.** User asked to build the whole front end now, stop at backend or user input, and merge PRs as they go. Pages read `src/data/*.ts`; stage 4 swaps these for the database.
+- **2026-10-10 · Browser-only cart (localStorage via `useSyncExternalStore`).** Lets Add to bag, cart and checkout work without a backend; becomes the guest cart that merges into the server cart at login.
+- **2026-10-10 · Placeholder photos from Unsplash downloaded into `public/images/`.** User approved internet placeholders to be replaced later; ids and replacement rules in `public/images/README.md`.
+- **2026-10-10 · Motion Primitives Carousel / Infinite Slider skipped.** They need lucide-react and react-use-measure; native scroll-snap does the job without new dependencies.
+- **2026-10-10 · Login, register and place-order are preview-only.** They validate and say nothing was saved, rather than pretending to work.
 - **2026-10-10 · One feature per branch, no commit without being asked, ask before new dependencies.** User rule.

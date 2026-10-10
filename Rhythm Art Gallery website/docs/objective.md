@@ -5,6 +5,21 @@ Reference for what is done and what is next. Check this file before starting any
 ## Goal
 A working, concept-stage e-commerce site for a local boutique (saris, suits, jewellery, handbags/purses): interactive floral-Indian-embroidery landing page, product browsing, community page, user login, cart, and test-mode Razorpay checkout. Placeholder images the owner can swap later. Details: `docs/vision.md`.
 
+## Status (front end done, backend not started)
+| Stage | Status |
+|---|---|
+| 0 Foundation docs · 1 Scaffold · 2 Design shell | done |
+| 3 Landing page | done (static data) |
+| 4 Data layer | **not started: needs backend dependency approval + Postgres** |
+| 5 Catalogue pages | UI done on static data; DB wiring pending |
+| 6 Community page | UI done on static data; DB wiring pending |
+| 7 Authentication | UI only (`/login`, `/register`); real auth pending |
+| 8 Cart | browser-only cart done; server cart + merge pending |
+| 9 Checkout & payments | UI only (`/checkout`); Razorpay pending |
+| 10 Orders & account · 11 Admin-lite · 12 Hardening · 13 Deploy | not started |
+
+PR-by-PR history: `docs/prhistory.md`. Handover and open questions: `docs/handover.md`.
+
 ## How we work
 - One stage at a time. One feature per branch (`stage-N-name` or finer). Stop at the end of each stage for user review.
 - UI is built one section at a time, stopping after each.

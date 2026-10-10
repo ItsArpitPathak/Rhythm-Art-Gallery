@@ -17,7 +17,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${playfair.variable} ${dmSans.variable}`}>
       <body className="flex min-h-screen flex-col">
         <Header />
-        <div className="flex-1">{children}</div>
+        {/* Slide-in reveals and the hero frame briefly poke past the edge; clip them here, not on body (keeps the sticky header). */}
+        <div className="flex-1 overflow-x-clip">{children}</div>
         <Footer />
       </body>
     </html>

@@ -2,56 +2,61 @@
 
 Living status doc. Read this first when picking up the project. Updated at the end of every session, successful build, and commit.
 
-**Last updated:** 2026-10-10 · stage 1 merged to `main` (`a480343`); stage 2 built on `stage-2-design-shell`, awaiting review
+**Last updated:** 2026-10-10 · front end complete on static data; stopped at the backend. PRs #1 to #8 merged to `main`.
 
 ## Project
-Concept e-commerce site for a local boutique (saris, suits, jewellery, handbags/purses). Interactive landing, floral Indian embroidery look, login, Razorpay payments. See `docs/vision.md`.
+Concept e-commerce site for a local boutique, Rhythm Art Gallery (RAG): saris, suits, jewellery, handbags, purses. Interactive floral-Indian-embroidery look, community page, cart, checkout, login, Razorpay payments (payments and login not live yet). See `vision.md`.
 
 ## Where things are
-- Repo: https://github.com/ItsArpitPathak/Rhythm-Art-Gallery (private), branch `main`.
-- Local: `...\javaProject\Rhythm Art Gallery\` is the git root. All project files in `Rhythm Art Gallery website/`.
-- Layout: `docs/` (vision, objective, decisions, this handover) · `src/` (app, components, lib) · `public/` (brand logo, bg svg, images) · root: `CLAUDE.md`, `.env.example`, config files.
-- Preferences for building websites: `~/.claude/global.md` (palette from Realtime Colors, 2 fonts, Haikei SVG, Motion Primitives, one section at a time). Pointer added in `~/.claude/CLAUDE.md`.
+- Repo: https://github.com/ItsArpitPathak/Rhythm-Art-Gallery (private), branch `main`. Every change since stage 2 went through a GitHub PR; see `prhistory.md`.
+- Local: `...\javaProject\Rhythm Art Gallery\` is the git root. The project lives in `Rhythm Art Gallery website/`.
+- Layout: `docs/` (vision, objective, decisions, prhistory, this handover) · `src/app` (routes) · `src/components/{home,shop,site,auth,motion-primitives}` · `src/data` (placeholder catalogue + community) · `src/lib` (cart, validation, format, india) · `public/{brand,bg,images}` · root: `CLAUDE.md`, `.env.example`, config files.
+- Website preferences: `~/.claude/global.md`.
 
-## Locked stack (ask before changing)
-Next.js + TypeScript + Tailwind · Prisma + PostgreSQL · Auth.js (email+password) · Razorpay (test mode) · Motion Primitives · Vercel + Neon + Cloudinary · Vitest/Playwright.
+## Stack (locked, ask before changing)
+Next.js 16 + TypeScript + Tailwind 4 · Prisma + PostgreSQL · Auth.js (email+password) · Razorpay (test mode) · Motion Primitives · Vercel + Neon + Cloudinary · Vitest/Playwright.
+Installed so far: next, react, typescript, tailwindcss, eslint, vitest, motion. **Not installed (need approval):** prisma, @prisma/client, next-auth, @auth/prisma-adapter, bcryptjs, zod, razorpay, playwright.
 
-## Done so far
-| Step | Status | Notes |
-|---|---|---|
-| Review of old Spring Boot docs | done | Verdict: over-engineered for a boutique; stack changed |
-| Plan approved | done | Plan file: `~/.claude/plans/uh-i-need-to-clever-firefly.md` |
-| 0. docs | done | vision, decisions, CLAUDE.md, .env.example, .gitignore |
-| Old `requirements.md`, `HLD report.md`, `LLD report.md` | deleted | Obsolete; in git history at `e5a3848` |
-| 1. scaffold | **done, merged** | Merged to `main` as `a480343`. Next.js 16 + TS + Tailwind 4 + ESLint + Vitest. Lint, typecheck, test, build all pass |
-| 2. design system + shell | **built, awaiting review** | Branch `stage-2-design-shell`. Palette, fonts, bg SVGs, header (Disclosure mobile menu, ScrollProgress bar), footer, logo. Checked in browser at desktop + 375px |
-| 3–13 | not started | See `docs/objective.md` |
+## What is built (front end, all on static data)
+| Route | What |
+|---|---|
+| `/` | Hero (animated headline, rotating word, tilt arch photo, glow CTA), category tiles, new arrivals strip, craft story with count-up stats, community teaser, visit banner |
+| `/shop`, `/shop/[category]` | Category tabs, price filter, sort, empty state |
+| `/new-arrivals` | New pieces with per-category tabs |
+| `/product/[slug]` | Hover zoom, size + quantity, Add to bag / Buy now, accordions, related items |
+| `/cart` | Browser-only cart (localStorage), qty, remove, totals, placeholder shipping rule |
+| `/checkout` | Address form with validation, payment choice, summary. **Preview only** |
+| `/login`, `/register` | Forms with validation. **Preview only** |
+| `/community` | Animated timeline, pillars, contact CTA |
+| 404 | Styled |
 
-## Commits
-- `e5a3848` Add vision, decisions, project rules and env template
-- `6867a40` Move all project files into Rhythm Art Gallery website folder
-- `c3b27cd` Remove obsolete Spring Boot requirements, HLD and LLD
-- `92e171c` Add handover.md
-- `86bde08` Add objective.md (on `main`)
-- `7663213` Stage 1 scaffold; `a480343` merge of stage 1 into `main`
+Header: logo badge, nav, live cart count, login, animated mobile menu, scroll progress bar. Footer: embroidery divider, placeholder contact details.
 
-## Checks (lint / type check / tests)
-Stage 2: lint clean, typecheck clean, test 1/1, build OK, browser check OK, no console errors. Stage 1: `npm run lint` clean, `npm run typecheck` clean, `npm test` 1/1 pass, `npm run build` OK. `npm audit`: 5 high, all dev-only (braces ReDoS via eslint-config-next); fix would downgrade eslint-config-next to 14, so not applied.
+## Checks (last run, all on `main`)
+`npm run lint` clean · `npm run typecheck` clean · `npm test` 4 files, 13 tests pass · `npm run build` OK (all routes static). Browser-verified at desktop and 375px: no horizontal overflow on any page. `npm audit`: 5 high, dev-only (braces via eslint-config-next); fix would downgrade, not applied.
+
+## Where I stopped: needs backend or your input
+1. **Database / backend (objective stages 4, 7–10):** no Postgres, Prisma, auth, server cart, orders or payments exist. Login, register and "Place order" only show a preview notice. **Needs your approval for the backend dependencies, and a local or Neon Postgres.**
+2. **Razorpay:** needs your test keys in a local `.env` (never committed).
+3. **Real content from you:** product photos and details, shop address/phone/email/Instagram (placeholders in `src/components/site/nav-links.ts`), real community events and photos (`src/data/community.ts`), real stats (10+ years, 500+ pieces, 12 events are invented, in `components/home/craft-story.tsx`), care/shipping/returns text (placeholder copy), terms and privacy pages (links are not built).
 
 ## Skipped / stubbed / mocked / hard-coded
-Stage 2: cart count hard-coded 0; nav links (/shop, /new-arrivals, /community, /cart, /login) 404 until their stages; shop phone/email/address/Instagram are placeholders (`src/components/site/nav-links.ts`); home is a placeholder until stage 3; footer has no year (Next 16 cache components forbid `new Date()` in a server render); `cn` has no tailwind-merge; logo is a JPG with its own pink background, shown as a round badge. Stage 1: `AGENTS.md` came from the Next.js template (kept). Deferred by design: GST invoices, courier API, email, reviews, wishlist, coupons, admin panel (step 12, optional).
+- All catalogue and community data is invented placeholder content; photos are Unsplash (ids in `public/images/README.md`).
+- Cart is browser-only; shipping rule (free over ₹5,000, else ₹150) is a placeholder.
+- Login, register, checkout: validation only, nothing saved or charged.
+- Motion Primitives Carousel and Infinite Slider not used (they need lucide-react and react-use-measure); native scroll-snap row instead.
+- Vendored Motion Primitives carry `@ts-nocheck` and are excluded from lint.
+- Logo is a JPG with its own pink background (shown as a round badge); text on it says "Rhythm Artistry & Clothing" while the site says "Rhythm Art Gallery".
+- Filters are client state, not in the URL. No search, wishlist, reviews, coupons, pincode check, invoices (out of scope for v1).
+- Footer shows no copyright year (Next 16 forbids `new Date()` in a server render).
+- No Terms/Privacy/Shipping/Returns/About/Contact pages yet.
 
-## Open questions / assumptions to confirm
-1. Stage 1 deps installed (next, react, typescript, tailwindcss, eslint, vitest, @types/node bumped to 24 to satisfy vitest). Assumed "start stage 1" approved those; later-stage deps (prisma, next-auth, zod, razorpay, motion, bcryptjs, playwright) still need approval.
-2. Make `Rhythm Art Gallery website/` the git root (needs history rewrite + force push)? Currently its parent is the root.
-3. `npx prisma migrate dev` is the intended migrate command?
-4. Repo private OK? Name is `Rhythm-Art-Gallery` (GitHub disallows spaces).
-5. GST registration status of the shop (decides whether invoices are ever needed).
-6. COD option on or off (default off).
-7. Admin panel in v1 or later.
-
-## Needed from user before design step
-Realtime Colors hex codes · heading + body fonts · Haikei SVG path · shop name/logo, contact, address · community content (events, dates, photos, text).
+## Assumptions to confirm
+1. Logo wording vs the shop name (above).
+2. Prices are GST-inclusive in ₹; no GST invoices in v1. Is the shop GST-registered?
+3. COD: off. Guest checkout: not built (login required, per the original requirement).
+4. Repo root is the parent folder `Rhythm Art Gallery/`, not the website folder. Flattening needs a history rewrite and force-push.
+5. Placeholder shipping rule and return policy (7 days) are mine, not the shop's.
 
 ## Next action
-User reviews stage 2 and merges; supply real shop contact details. Then stage 3 (landing page, section by section).
+Approve the backend dependency list and say which Postgres to use (local Docker or Neon), then continue at objective stage 4 (Prisma schema, migration, seed), moving the static `src/data` catalogue into the database. Meanwhile, send real photos, shop details and community content.
