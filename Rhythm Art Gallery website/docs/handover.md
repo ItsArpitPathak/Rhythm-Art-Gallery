@@ -2,7 +2,7 @@
 
 Living status doc. Read this first when picking up the project. Updated at the end of every session, successful build, and commit.
 
-**Last updated:** 2026-10-10 · front end complete on static data (PRs #1 to #9). Stage 4 (data layer) done in PR #10: schema, migration applied to the Neon `dev` branch, seed run, `src/lib/db.ts`. Pages still read the static data.
+**Last updated:** 2026-10-11 · UI polish + mobile tap-target pass open as PR #12 (branch `ui-polish-mobile`, not merged). Before that: front end complete on static data (PRs #1 to #9). Stage 4 (data layer) done in PR #10: schema, migration applied to the Neon `dev` branch, seed run, `src/lib/db.ts`. Pages still read the static data.
 
 ## Project
 Concept e-commerce site for a local boutique, Rhythm Art Gallery (RAG): saris, suits, jewellery, handbags, purses. Interactive floral-Indian-embroidery look, community page, cart, checkout, login, Razorpay payments (payments and login not live yet). See `vision.md`.
@@ -20,7 +20,7 @@ Installed so far: next, react, typescript, tailwindcss, eslint, vitest, motion, 
 ## What is built (front end, all on static data)
 | Route | What |
 |---|---|
-| `/` | Hero (animated headline, rotating word, tilt arch photo, glow CTA), category tiles, new arrivals strip, craft story with count-up stats, community teaser, visit banner |
+| `/` | Hero (animated headline, tilt arch photo, magnetic CTA), category bento (Saris large), new arrivals strip, craft story with count-up stats, community teaser, visit banner |
 | `/shop`, `/shop/[category]` | Category tabs, price filter, sort, empty state |
 | `/new-arrivals` | New pieces with per-category tabs |
 | `/product/[slug]` | Hover zoom, size + quantity, Add to bag / Buy now, accordions, related items |
@@ -33,7 +33,7 @@ Installed so far: next, react, typescript, tailwindcss, eslint, vitest, motion, 
 Header: logo badge, nav, live cart count, login, animated mobile menu, scroll progress bar. Footer: embroidery divider, placeholder contact details.
 
 ## Checks (last run, all on `main`)
-`npm run lint` clean · `npm run typecheck` clean · `npm test` 4 files, 13 tests pass · `npm run build` OK (all routes static). Browser-verified at desktop and 375px: no horizontal overflow on any page. `npm audit`: 5 high, dev-only (braces via eslint-config-next); fix would downgrade, not applied.
+`npm run lint` clean · `npm run typecheck` clean · `npm test` 6 files, 17 tests pass · `npm run build` OK (all routes static). Browser-verified at desktop and 375px: no horizontal overflow on any page; on PR #12 every control is at least 44px tall at 375px (checked on shop, product, login, register, checkout). `npm audit`: 5 high, dev-only (braces via eslint-config-next); fix would downgrade, not applied.
 
 ## Where I stopped: needs backend or your input
 1. **Backend (objective stages 7–10):** the database now exists (stage 4) but auth, server cart, orders and payments do not. Login, register and "Place order" still only show a preview notice. Needs your approval for next-auth, @auth/prisma-adapter, bcryptjs, razorpay and playwright.
@@ -66,7 +66,7 @@ Header: logo badge, nav, live cart count, login, animated mobile menu, scroll pr
 - **Tests:** 6 files, 17 tests pass, including `prisma/seed.db.test.ts`, a read-only check of the seeded database (skipped when `DATABASE_URL` is unset).
 - `npm audit` also reports 4 high in the `prisma` dev CLI (deepmerge-ts, bundled mysql2; we use Postgres only, CLI not shipped). The only fix downgrades Prisma to 6, not applied.
 
-## UI polish pass (Emil Kowalski + taste skills)
+## UI polish pass (Emil Kowalski + taste skills) — PR #12, open
 - Motion: removed hero GlowEffect and TextLoop line; 150ms `active:scale-[0.97]` press state on buttons; 300ms ease-out image hovers (no Tilt on category tiles); add-to-bag label cross-fade; cart badge spring bump; sliding active-nav pill; visit CTA slides up instead of scaling; `MotionConfig reducedMotion="user"` (`src/components/site/motion.tsx`) plus a reduced-motion CSS block.
 - Layout: category tiles are a bento (Saris large); `min-h-dvh`; mountains background is a fixed `body::before` layer, not `background-attachment: fixed`.
 - Kept: placeholder stats (10+/500+/12) by user decision. Lint, typecheck, 17 tests pass.

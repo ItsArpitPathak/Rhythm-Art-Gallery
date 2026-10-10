@@ -1,4 +1,4 @@
-# Handoff (end of session, 2026-10-10)
+# Handoff (updated 2026-10-11)
 
 Snapshot for whoever resumes next. `docs/handover.md` is the long-lived status doc; this file is the session summary and the exact way to pick up. No secrets are stored here.
 
@@ -8,12 +8,15 @@ Snapshot for whoever resumes next. `docs/handover.md` is the long-lived status d
 - **Data layer (stage 4):** done. Neon project `rhythmArtGallery`, `dev` branch holds the migrated schema and the seeded placeholder catalogue (5 categories, 26 products, 5 events). `src/lib/db.ts` is the Prisma client (`@prisma/adapter-pg`).
 - **Pages still read `src/data/*.ts`, not the database.** Switching them is stage 5.
 - **Checks on `main`:** lint clean, typecheck clean, 17 of 17 tests pass (includes a read-only test against the Neon dev database), build OK.
+- **Open PR #12** (`ui-polish-mobile`, commit `8ff03e8`): motion tuning, category bento, mobile tap targets. Lint, typecheck and 17 tests pass; no CI configured; auto-merge off. Merge it before starting stage 5 so work branches from the polished UI. Not tested on a real phone (measured at 375px with browser emulation only).
 - Dev server is **not** running. No background tasks are running.
 
 ## What happened this session
 1. Reviewed the old Spring Boot docs, replaced the plan with Next.js + Prisma + Postgres; wrote vision, objective, decisions, handover, prhistory.
 2. Built stages 1 to 3 and the whole front end in 8 PRs, then a VS Code terminal profile (PR #9).
 3. Stage 4: schema, migration and seed. A second Claude session working in the same folder finished and merged it (PR #10) while this session was also editing. This session briefly overwrote that session's `src/lib/db.ts` and `prisma/seed.ts` in the working tree; both were restored from git, nothing was lost or committed wrongly.
+
+4. UI polish session (2026-10-11), using the Emil Kowalski and taste-skill guidance: removed decorative loops (hero glow, rotating word), added press feedback and 300ms ease-out hovers, category bento, reduced-motion support, fixed-layer background, and raised every mobile tap target to 44px with 16px inputs on phones. Home-page stats left as the invented placeholders by choice. Skills were installed into `javaProject/.agents/skills/` (outside the repo, not committed). `npx impeccable install` failed twice (download timeout), nothing installed.
 
 **Lesson:** run one session per repo at a time. Two sessions writing the same files will clobber each other.
 
